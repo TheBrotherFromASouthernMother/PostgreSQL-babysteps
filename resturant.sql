@@ -42,5 +42,26 @@ SELECT name, restaurant."last time you ate there" FROM restaurant WHERE restaura
 SELECT name, restaurant."last time you ate there" FROM restaurant WHERE restaurant."last time you ate there" NOT BETWEEN (NOW() - INTERVAL '14 day') AND NOW() AND stars = 5;
 
 
+--list restaurants by the closest distance.
+SELECT name, distance FROM restaurant ORDER by distance;
 
-SELECT name, distance FROM restaurant ORDER by distance
+-- list the top 2 restaurants by distance
+SELECT name, distance FROM restaurant ORDER BY distance LIMIT 2;
+
+--list the top 2 restaurants by stars
+SELECT name, stars FROM restaurant WHERE stars = 5 LIMIT 2;
+
+-- list the top 2 restaurants by stars where the distance is less than 2 miles.
+SELECT name FROM restaurant WHERE stars > 1 AND distance < 20 LIMIT 2;
+
+--count the number of restaurants in the db.
+SELECT COUNT(*) FROM restaurant;
+
+--count the number of restaurants by category.
+SELECT COUNT(*) FROM restaurant WHERE category = 'Mexican';
+
+--get the average stars per restaurant by category.
+SELECT AVG(stars) FROM restaurant WHERE category = 'Tex-Mex';
+
+--get the max stars of a restaurant by category.
+SELECT MAX(stars) FROM restaurant WHERE category = 'Tex-Mex';
